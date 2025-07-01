@@ -7,6 +7,19 @@
 > especially, the oauth proxy might not play very nice with Expo
 > so you might need to disable that in [`@acme/auth`](./packages/auth/src/index.ts)
 
+## Project Status
+
+This section tracks the implementation of the project based on the tickets defined in `tasks.md`.
+
+### Completed
+
+- [x] **Ticket: Database Schema Setup**
+  - **Description:** Integrated new `challenge` and `challengeAttempt` tables with the existing `user` schema provided by the authentication package.
+  - **Design Decisions (Table Relationships):**
+    - The `challenge` table stores the definition and content for each coding challenge.
+    - The `challengeAttempt` table records every attempt a user makes on a challenge. It establishes a many-to-one relationship back to both the `user` and `challenge` tables using `userId` and `challengeId` foreign keys.
+    - This design enables tracking multiple attempts for any challenge by any user, storing unique results (e.g., time taken, keystroke history) for each individual attempt.
+
 ## Installation
 
 > [!NOTE]
